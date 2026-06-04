@@ -15,7 +15,6 @@
 
 /* ── 2. Reset ─────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; cursor: none !important; }
-
 html, body { width: 100%; overflow-x: hidden; }
 html.lenis  { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto; }
@@ -41,6 +40,8 @@ body {
     height: 100%;
     z-index: 0;
     pointer-events: none;
+    transform: translate3d(0,0,0);
+    -webkit-transform: translate3d(0,0,0);
 }
 
 /* Every page layer floats above the canvas */
@@ -90,14 +91,12 @@ body {
     max-width: 1600px;
     margin: 0 auto;
     gap: 5px;
-    /* Top padding = navbar height; NO bottom padding so footer touches grid */
     padding: calc(var(--navbar-h) + 35px) 5px 0;
 }
 
 .grid-item {
     overflow: hidden;
-    background: #1a0008;    /* dark fill — matches bg, no white flash */
-    /* NO box-shadow — white glow removed */
+    background: #1a0008;    
 }
 
 .grid-item img {
@@ -120,7 +119,6 @@ body {
     background: var(--dark-maroon);
     padding: 100px 60px;
     color: var(--text-light);
-    /* sits flush below the grid — no gap */
     margin-top: 0;
 }
 .credit-wrap { display: flex; justify-content: space-between; align-items: flex-end; max-width: 1400px; margin: 0 auto; }
@@ -158,17 +156,11 @@ body {
     user-select: none !important; 
     z-index: 10001; 
     
-    /* 
-       ADJUST THESE MARGINS TO ALIGN THE TIP:
-       Because 'transform' is overwritten by JavaScript, margins are used to offset the hot-spot.
-       - margin-left: Shifts the cursor left (negative) or right (positive).
-       - margin-top:  Shifts the cursor up (negative) or down (positive).
-    */
+    /* Programmatic offsets to align selection hot-spot */
     margin-left: -12px; 
     margin-top: 0px;   
 }
 
-/* Programmatic vector particle frames with glowing shadows */
 .particle { 
     position: fixed; 
     pointer-events: none !important; 
@@ -178,7 +170,6 @@ body {
     align-items: center;
     justify-content: center;
     will-change: transform, opacity;
-    /* Soft glowing colored halo matching the sparkle color */
     filter: drop-shadow(0 0 4px var(--sparkle-glow, currentColor));
 }
 
@@ -188,31 +179,14 @@ body {
     display: block;
 }
 
-/* ── 9. Responsive ────────────────────────────── */
-@media (max-width: 900px) {
-    .nav-links, .force-enquiry { display: none; }
-    .navbar { padding: 16px 24px; }
-    .slider-content { width: 100%; }
-    .portrait, .landscape { grid-column: span 12; height: 60vh; }
-    .full-width { height: 55vh; }
-    .credit-wrap { flex-direction: column; align-items: center; text-align: center; gap: 40px; }
-    #custom-cursor, .particle { display: none !important; }
-    * { cursor: auto !important; }
-}
-
-/* ═══════════════════════════════════════════════
-   CROSS-BROWSER & DEVICE COMPATIBILITY OPTIMIZATIONS
-   ═══════════════════════════════════════════════ */
-
-/* 1. Prevent default input rendering styles on iOS Safari & Chrome */
+/* ── 9. Cross-Device Compatibility & Resets ────── */
 input, textarea, button {
     appearance: none;
-    -webkit-appearance: none; /* Disables standard iOS rounded corners & gradients */
+    -webkit-appearance: none;
     border-radius: 0;
     outline: none;
 }
 
-/* 2. Force Hardware Acceleration (GPU) for iOS Safari stability */
 #fantasy-bg, #custom-cursor, .particle {
     transform: translate3d(0, 0, 0);
     -webkit-transform: translate3d(0, 0, 0);
@@ -220,11 +194,6 @@ input, textarea, button {
     -webkit-backface-visibility: hidden;
 }
 
-/* 
-   3. Robust Touch-Device Detection: 
-   Completely disables the custom cursor on touch viewports (iPhones, Android, 
-   iPads, and touch-screen laptops), restoring native high-speed cursor interactions. 
-*/
 @media (hover: none), (pointer: coarse) {
     #custom-cursor, .particle { 
         display: none !important; 
@@ -232,4 +201,74 @@ input, textarea, button {
     *, *::before, *::after { 
         cursor: auto !important; 
     }
+}
+
+/* ── 10. Responsive Layout overrides ────────────── */
+@media (max-width: 900px) {
+    /* Fixed navbar formatting centered elegantly on mobile */
+    .navbar {
+        padding: 15px 15px !important;
+        background: linear-gradient(135deg, rgba(128,0,0,.98), rgba(74,0,16,.96)) !important;
+    }
+    
+    .nav-container {
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .brand-block {
+        align-items: center;
+        text-align: center;
+    }
+    
+    .nav-logo-block {
+        justify-content: center;
+    }
+    
+    .brand-slogan {
+        margin-left: 0 !important;
+        text-align: center;
+        margin-top: 4px !important;
+    }
+    
+    /* Forces display layout of links */
+    .nav-links {
+        display: flex !important; 
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px 16px;
+    }
+    
+    .nav-links a {
+        margin: 0 !important; /* resets large desktop margins */
+        font-size: 9px;
+        letter-spacing: 2px;
+    }
+    
+    /* Forces display of enquiry on mobile */
+    .force-enquiry {
+        display: block !important;
+        margin-top: 4px;
+    }
+    
+    .nav-enquiry {
+        padding: 8px 16px !important;
+        font-size: 9px !important;
+    }
+
+    /* Prevent mobile menu overlaps on content containers */
+    .studio-grid {
+        padding-top: 180px !important;
+    }
+    .projects-header, .thesis-header, .about-main {
+        padding-top: 170px !important;
+    }
+
+    /* Native standard layout frames */
+    .slider-content { width: 100%; }
+    .portrait, .landscape { grid-column: span 12; height: 60vh; }
+    .full-width { height: 55vh; }
+    .credit-wrap { flex-direction: column; align-items: center; text-align: center; gap: 40px; }
 }

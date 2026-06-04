@@ -4,6 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About | Mayakriti</title>
+    <!-- Browser Tab Icon (Favicon) -->
+<link rel="icon" type="image/png" href="logo.png">
+
+<!-- Apple Touch Icon (For iOS Home Screen Bookmarks) -->
+<link rel="apple-touch-icon" href="logo.png">
+<!-- Search Engine Optimization (SEO) Meta Tags -->
+    <meta name="description" content="Mayakrithi Interiors | Design Beyond Walls. Premium interior design studio crafting luxury residential spaces, customized interior architecture, and timeless home decor.">
+    <meta name="keywords" content="Mayakrithi Interiors, Mayakriti, interior designer, interior design, interior architecture, home decor, residential interior design, premium interiors, luxury home design, customized interior concept, modern workspace, interior design studio India, Mumbai interior designer, Pune interior designer">
+    <meta name="author" content="Mayakrithi Interiors">
+
+    <!-- Open Graph / Facebook Meta Tags (For WhatsApp, Instagram, & Social Previews) -->
+    <meta property="og:title" content="Mayakrithi Interiors | Design Beyond Walls">
+    <meta property="og:description" content="Premium interior design studio crafting luxury residential spaces, customized interior architecture, and timeless home decor.">
+    <meta property="og:image" content="https://yourdomain.com/logo.png"> <!-- Replace with your actual live URL once hosted -->
+    <meta property="og:url" content="https://yourdomain.com">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mayakrithi Interiors | Design Beyond Walls">
+    <meta name="twitter:description" content="Premium interior design studio crafting luxury residential spaces, customized interior architecture, and timeless home decor.">
+    <meta name="twitter:image" content="https://yourdomain.com/logo.png"> <!-- Replace with your actual live URL once hosted -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@300;400;700&display=swap" media="print" onload="this.media='all'">
@@ -26,6 +48,20 @@
             padding: calc(var(--navbar-h) + 65px) 60px 140px;
             max-width: 1400px;
             margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Responsive fluid page header */
+        .about-page-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(38px, 6vw, 56px); /* Scales cleanly across small phones and desktop screens */
+            font-weight: 400;
+            text-transform: uppercase;
+            color: var(--text-light);
+            letter-spacing: 1px;
+            line-height: 1.1;
+            margin-bottom: 50px;
         }
 
         /* ── 2. Editorial Split Layout ───────────────── */
@@ -34,16 +70,18 @@
             grid-template-columns: repeat(12, 1fr);
             gap: 60px;
             align-items: flex-start;
+            width: 100%;
         }
 
         .about-image-col {
             grid-column: span 5;
             position: relative;
+            width: 100%;
         }
 
         .about-image-wrap {
             width: 100%;
-            padding-bottom: 135%; /* portrait crop */
+            padding-bottom: 135%; /* portrait crop on desktop */
             position: relative;
             overflow: hidden;
             background: #1a0008;
@@ -63,17 +101,8 @@
             grid-column: span 7;
             display: flex;
             flex-direction: column;
-            gap: 35px;
-        }
-
-        .about-text-col h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 56px;
-            font-weight: 400;
-            line-height: 1.1;
-            text-transform: uppercase;
-            color: var(--text-light);
-            letter-spacing: 1px;
+            gap: 30px;
+            width: 100%;
         }
 
         .about-text-col p {
@@ -101,6 +130,7 @@
             margin-top: 100px;
             border-top: 1px solid rgba(245, 237, 230, 0.15);
             padding-top: 60px;
+            width: 100%;
         }
 
         .about-contact-section h2 {
@@ -117,12 +147,14 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 40px;
+            width: 100%;
         }
 
         .contact-detail-item {
             display: flex;
             flex-direction: column;
             gap: 10px;
+            width: 100%;
         }
 
         .contact-label {
@@ -146,33 +178,76 @@
             color: #e8b4b8;
         }
 
-        /* ── 4. Mobile Adjustments ───────────────────── */
+        /* ── 4. Mobile Adjustments for Phone Models ─── */
         @media (max-width: 900px) {
             .about-main {
-                padding: calc(var(--navbar-h) + 40px) 24px 80px;
+                padding: calc(var(--navbar-h) + 30px) 24px 80px; /* Safe padding for mobile viewports */
+            }
+
+            .about-page-header h1 {
+                margin-bottom: 30px; /* Tighter header spacing on small screens */
             }
 
             .about-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr; /* 1 column grid */
                 gap: 40px;
+                width: 100%;
             }
 
+            /* FIX: Resetting grid-column from desktop's 12 to mobile's 1 column span blocks right overflow */
             .about-image-col, .about-text-col {
-                grid-column: span 12;
+                grid-column: span 1 !important; 
+                width: 100% !important;
+                max-width: 100% !important;
+                box-sizing: border-box;
             }
 
-            .about-text-col h1 {
-                font-size: 40px;
+            /* Shift portrait aspect ratio to a landscape/rectangular crop on phone screens */
+            .about-image-wrap {
+                padding-bottom: 75%; 
             }
 
             .about-quote {
                 font-size: 20px;
                 padding-left: 15px;
+                margin: 10px 0;
+            }
+
+            .about-contact-section {
+                margin-top: 60px;
+                padding-top: 40px;
+            }
+
+            .about-contact-section h2 {
+                font-size: 26px;
+                margin-bottom: 30px;
             }
 
             .contact-details-grid {
                 grid-template-columns: 1fr;
-                gap: 30px;
+                gap: 25px;
+            }
+
+            /* Prevent auto-zooming on focus in iOS Safari */
+            .slider-content input, 
+            .slider-content textarea {
+                font-size: 16px !important;
+            }
+
+            /* Reclaim horizontal space inside slide-out on narrow phone screens */
+            .slider-content {
+                padding: 100px 24px 60px !important;
+                width: 100% !important;
+                box-sizing: border-box;
+            }
+
+            /* Prevent layout breaking text overflows on any phone viewport */
+            .contact-value, 
+            .slider-direct-contact p, 
+            .slider-direct-contact a {
+                word-break: break-all;
+                overflow-wrap: break-word;
+                font-size: clamp(12px, 3.8vw, 16px) !important;
             }
         }
     </style>
@@ -209,6 +284,12 @@
 
     <!-- Main Content Area -->
     <main class="about-main">
+        
+        <!-- Clean Page Header sits at the very top on both Desktop and Phones -->
+        <header class="about-page-header">
+            <h1>About Us</h1>
+        </header>
+
         <div class="about-grid">
             
             <!-- Left Portrait visual column -->
@@ -220,8 +301,6 @@
 
             <!-- Right Typographic manifesto column -->
             <section class="about-text-col">
-                <h1>About Us</h1>
-                
                 <p>At Mayakrithi Interiors, we believe that every space has a story waiting to be told. Founded with a passion for thoughtful design and creative problem-solving, our studio focuses on transforming ideas into functional, beautiful, and meaningful interiors.</p>
                 
                 <p>We approach each project with a fresh perspective and an open mind, embracing a variety of design styles to suit the unique vision and lifestyle of every client. Whether it's a cozy residence, a modern workspace, or a customized interior concept, our goal is to create spaces that balance aesthetics, comfort, and practicality.</p>

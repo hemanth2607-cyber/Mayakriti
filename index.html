@@ -4,6 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mayakriti | Design Beyond Walls</title>
+    <!-- Browser Tab Icon (Favicon) -->
+<link rel="icon" type="image/png" href="logo.png">
+
+<!-- Apple Touch Icon (For iOS Home Screen Bookmarks) -->
+<link rel="apple-touch-icon" href="logo.png">
+<!-- Search Engine Optimization (SEO) Meta Tags -->
+    <meta name="description" content="Mayakrithi Interiors | Design Beyond Walls. Premium interior design studio crafting luxury residential spaces, customized interior architecture, and timeless home decor.">
+    <meta name="keywords" content="Mayakrithi Interiors, Mayakriti, interior designer, interior design, interior architecture, home decor, residential interior design, premium interiors, luxury home design, customized interior concept, modern workspace, interior design studio India, Mumbai interior designer, Pune interior designer">
+    <meta name="author" content="Mayakrithi Interiors">
+
+    <!-- Open Graph / Facebook Meta Tags (For WhatsApp, Instagram, & Social Previews) -->
+    <meta property="og:title" content="Mayakrithi Interiors | Design Beyond Walls">
+    <meta property="og:description" content="Premium interior design studio crafting luxury residential spaces, customized interior architecture, and timeless home decor.">
+    <meta property="og:image" content="https://yourdomain.com/logo.png"> <!-- Replace with your actual live URL once hosted -->
+    <meta property="og:url" content="https://yourdomain.com">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mayakrithi Interiors | Design Beyond Walls">
+    <meta name="twitter:description" content="Premium interior design studio crafting luxury residential spaces, customized interior architecture, and timeless home decor.">
+    <meta name="twitter:image" content="https://yourdomain.com/logo.png"> <!-- Replace with your actual live URL once hosted -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@300;400;700&display=swap" media="print" onload="this.media='all'">
@@ -85,7 +107,7 @@
                 <span>MAYAKRITI<br>INTERIORS</span>
             </div>
             <div class="credit-col center links">
-                <a href="#" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
+                <a href="https://www.instagram.com/maneesha_sms" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
                 <a href="#" onclick="toggleSlider(); return false;">CONTACT</a>
             </div>
             <div class="credit-col right">
@@ -94,7 +116,7 @@
         </div>
     </footer>
 
-    <!-- Corrected: Form is nested safely inside the original modal drawer structure -->
+    <!-- Web3Forms Slider Drawer -->
     <div id="enquirySlider" class="slider-container" role="dialog" aria-modal="true" aria-label="Enquiry form">
         <div class="slider-content">
             <button class="close-slider" onclick="toggleSlider()" aria-label="Close">CLOSE ×</button>
@@ -103,17 +125,11 @@
             
             <form id="enquiryForm" action="https://api.web3forms.com/submit" method="POST">
                 
-                <!-- Required: Your unique Web3Forms Access Key -->
+                <!-- Web3Forms Access Key Token -->
                 <input type="hidden" name="access_key" value="e04ebe49-4973-474e-beb4-148bc0a5d6e8">
+                <input type="hidden" name="subject" value="New Enquiry from Mayakriti Home Page">
+                <input type="hidden" name="redirect" value="index.html">
 
-                <!-- Optional: Set a custom subject line for incoming email notifications -->
-                <input type="hidden" name="subject" value="New Enquiry from Mayakriti Portfolio">
-
-                <!-- Optional: Redirect back to your home page after submission -->
-                <!-- Replace with your actual live URL once hosted (e.g., https://mayakriti.com/index.html) -->
-                <input type="hidden" name="redirect" value="http://yourdomain.com/index.html">
-
-                <!-- Form Inputs -->
                 <input type="text"  name="name"    placeholder="NAME"             required autocomplete="name">
                 <input type="email" name="email"   placeholder="EMAIL"            required autocomplete="email">
                 <input type="tel"   name="phone"   placeholder="PHONE (OPTIONAL)"          autocomplete="tel">
@@ -121,6 +137,14 @@
                 
                 <button type="submit">SUBMIT ENQUIRY</button>
             </form>
+
+            <!-- Direct Contact details inside slider content -->
+            <div class="slider-direct-contact" style="margin-top: 45px; border-top: 1px solid rgba(232, 180, 184, 0.15); padding-top: 30px;">
+                <p style="font-size: 9px; letter-spacing: 2px; color: rgba(245, 237, 230, 0.4); margin-bottom: 15px; font-weight: 700; text-transform: uppercase;">Direct Connection</p>
+                <p style="font-size: 13px; margin-bottom: 8px; font-weight: 300;"><a href="mailto:mayakrtiinteriorz@gmail.com" style="color: #e8b4b8; text-decoration: none; transition: opacity 0.3s;">mayakrtiinteriorz@gmail.com</a></p>
+                <p style="font-size: 13px; margin-bottom: 8px; font-weight: 300;"><a href="tel:6281781235" style="color: #e8b4b8; text-decoration: none; transition: opacity 0.3s;">+91 6281781235</a></p>
+                <p style="font-size: 13px; font-weight: 300;"><a href="https://www.instagram.com/maneesha_sms" target="_blank" rel="noopener noreferrer" style="color: #e8b4b8; text-decoration: none; transition: opacity 0.3s;">@maneesha_sms</a></p>
+            </div>
         </div>
     </div>
 
