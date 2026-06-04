@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Mayakriti</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@300;400;700&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@300;400;700&display=swap"></noscript>
+    
+    <!-- Global CSS stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        .nav-links a.active {
+            opacity: 1 !important;
+            border-bottom: 1px solid var(--text-light);
+            padding-bottom: 2px;
+        }
+
+        /* ── 1. Page Wrapper ─────────────────────────── */
+        .about-main {
+            position: relative;
+            z-index: 1;
+            padding: calc(var(--navbar-h) + 65px) 60px 140px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* ── 2. Editorial Split Layout ───────────────── */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 60px;
+            align-items: flex-start;
+        }
+
+        .about-image-col {
+            grid-column: span 5;
+            position: relative;
+        }
+
+        .about-image-wrap {
+            width: 100%;
+            padding-bottom: 135%; /* portrait crop */
+            position: relative;
+            overflow: hidden;
+            background: #1a0008;
+            border: 1px solid rgba(128, 0, 0, 0.15);
+        }
+
+        .about-image-wrap img {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: saturate(0.85) brightness(0.92);
+        }
+
+        .about-text-col {
+            grid-column: span 7;
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+        }
+
+        .about-text-col h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 56px;
+            font-weight: 400;
+            line-height: 1.1;
+            text-transform: uppercase;
+            color: var(--text-light);
+            letter-spacing: 1px;
+        }
+
+        .about-text-col p {
+            font-size: 14px;
+            line-height: 1.8;
+            color: rgba(245, 237, 230, 0.75);
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        /* Architectural Manifesto quote style */
+        .about-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-style: italic;
+            color: #e8b4b8;
+            border-left: 2px solid var(--maroon);
+            padding-left: 25px;
+            margin: 15px 0;
+            line-height: 1.4;
+        }
+
+        /* ── 3. Embedded Contact Section ─────────────── */
+        .about-contact-section {
+            margin-top: 100px;
+            border-top: 1px solid rgba(245, 237, 230, 0.15);
+            padding-top: 60px;
+        }
+
+        .about-contact-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-light);
+            margin-bottom: 40px;
+        }
+
+        .contact-details-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .contact-detail-item {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .contact-label {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--maroon);
+            font-weight: 700;
+        }
+
+        .contact-value {
+            font-size: 16px;
+            color: var(--text-light);
+            text-decoration: none;
+            transition: opacity 0.3s, color 0.3s;
+            letter-spacing: 1px;
+            font-weight: 300;
+        }
+
+        .contact-value:hover {
+            color: #e8b4b8;
+        }
+
+        /* ── 4. Mobile Adjustments ───────────────────── */
+        @media (max-width: 900px) {
+            .about-main {
+                padding: calc(var(--navbar-h) + 40px) 24px 80px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .about-image-col, .about-text-col {
+                grid-column: span 12;
+            }
+
+            .about-text-col h1 {
+                font-size: 40px;
+            }
+
+            .about-quote {
+                font-size: 20px;
+                padding-left: 15px;
+            }
+
+            .contact-details-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Fantasy animated background -->
+    <canvas id="fantasy-bg" aria-hidden="true"></canvas>
+
+    <div id="custom-cursor" aria-hidden="true"></div>
+
+    <nav class="navbar nav-solid" aria-label="Main navigation">
+        <div class="nav-container">
+            <div class="brand-block">
+                <a href="index.html" class="nav-logo-block">
+                    <img src="logo.png" alt="Mayakriti Logo" class="brand-img" width="45" height="45">
+                    <div class="brand-text">
+                        <span class="brand-name">Mayakriti</span>
+                    </div>
+                </a>
+                <span class="brand-slogan">design beyond walls</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">HOME</a>
+                <a href="projects.html">PROJECTS</a>
+                <a href="thesis.html">THESIS</a>
+                <a href="about.html" class="active">ABOUT</a>
+            </div>
+            <div class="force-enquiry">
+                <button class="nav-enquiry" onclick="toggleSlider()" aria-haspopup="dialog">ENQUIRY</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="about-main">
+        <div class="about-grid">
+            
+            <!-- Left Portrait visual column -->
+            <section class="about-image-col">
+                <div class="about-image-wrap">
+                    <img src="3BHK_Premium_Residential_Project/2.jpeg" alt="Mayakrithi Interiors Signature Space">
+                </div>
+            </section>
+
+            <!-- Right Typographic manifesto column -->
+            <section class="about-text-col">
+                <h1>About Us</h1>
+                
+                <p>At Mayakrithi Interiors, we believe that every space has a story waiting to be told. Founded with a passion for thoughtful design and creative problem-solving, our studio focuses on transforming ideas into functional, beautiful, and meaningful interiors.</p>
+                
+                <p>We approach each project with a fresh perspective and an open mind, embracing a variety of design styles to suit the unique vision and lifestyle of every client. Whether it's a cozy residence, a modern workspace, or a customized interior concept, our goal is to create spaces that balance aesthetics, comfort, and practicality.</p>
+                
+                <blockquote class="about-quote">
+                    "Designing spaces that feel personal, functional, and timeless."
+                </blockquote>
+
+                <p>Driven by creativity, attention to detail, and a client-centered approach, Mayakrithi Interiors works closely with clients throughout the design journey, ensuring every space reflects their personality, needs, and aspirations. We are committed to delivering designs that are not only visually appealing but also purposeful and enduring.</p>
+                
+                <p>Turning ideas into spaces you'll love to live, work, and grow in.</p>
+            </section>
+        </div>
+
+        <!-- Integrated Contact block at bottom of about content -->
+        <section class="about-contact-section">
+            <h2>Contact & Collaboration</h2>
+            <div class="contact-details-grid">
+                
+                <div class="contact-detail-item">
+                    <span class="contact-label">Email Us</span>
+                    <a href="mailto:mayakrtiinteriorz@gmail.com" class="contact-value">mayakrtiinteriorz@gmail.com</a>
+                </div>
+
+                <div class="contact-detail-item">
+                    <span class="contact-label">Call Directly</span>
+                    <a href="tel:6281781235" class="contact-value">+91 6281781235</a>
+                </div>
+
+                <div class="contact-detail-item">
+                    <span class="contact-label">Follow on Instagram</span>
+                    <a href="https://www.instagram.com/maneesha_sms" target="_blank" rel="noopener noreferrer" class="contact-value">@maneesha_sms</a>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-credits">
+        <div class="credit-wrap">
+            <div class="credit-col left branding">
+                <span>MAYAKRITI<br>INTERIORS</span>
+            </div>
+            <div class="credit-col center links">
+                <a href="https://www.instagram.com/maneesha_sms" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
+                <a href="#" onclick="toggleSlider(); return false;">CONTACT</a>
+            </div>
+            <div class="credit-col right">
+                <span>SITES BY MPG &copy; 2026</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Web3Forms Slider Drawer (With integrated Direct Connection Details) -->
+    <div id="enquirySlider" class="slider-container" role="dialog" aria-modal="true" aria-label="Enquiry form">
+        <div class="slider-content">
+            <button class="close-slider" onclick="toggleSlider()" aria-label="Close">CLOSE ×</button>
+            <h2>GET IN TOUCH</h2>
+            <p>Design beyond walls starts here.</p>
+            
+            <form id="enquiryForm" action="https://api.web3forms.com/submit" method="POST">
+                
+                <!-- Web3Forms Access Key Token -->
+                <input type="hidden" name="access_key" value="e04ebe49-4973-474e-beb4-148bc0a5d6e8">
+                <input type="hidden" name="subject" value="New Enquiry from Mayakriti Portfolio">
+                <input type="hidden" name="redirect" value="about.html">
+
+                <input type="text"  name="name"    placeholder="NAME"             required autocomplete="name">
+                <input type="email" name="email"   placeholder="EMAIL"            required autocomplete="email">
+                <input type="tel"   name="phone"   placeholder="PHONE (OPTIONAL)"          autocomplete="tel">
+                <textarea           name="message" placeholder="PROJECT DETAILS"  rows="5"  required></textarea>
+                
+                <button type="submit">SUBMIT ENQUIRY</button>
+            </form>
+
+            <!-- Direct Contact detail list situated within slider content -->
+            <div class="slider-direct-contact" style="margin-top: 45px; border-top: 1px solid rgba(232, 180, 184, 0.15); padding-top: 30px;">
+                <p style="font-size: 9px; letter-spacing: 2px; color: rgba(245, 237, 230, 0.4); margin-bottom: 15px; font-weight: 700; text-transform: uppercase;">Direct Connection</p>
+                <p style="font-size: 13px; margin-bottom: 8px; font-weight: 300;"><a href="mailto:mayakrtiinteriorz@gmail.com" style="color: #e8b4b8; text-decoration: none; transition: opacity 0.3s;">mayakrtiinteriorz@gmail.com</a></p>
+                <p style="font-size: 13px; margin-bottom: 8px; font-weight: 300;"><a href="tel:6281781235" style="color: #e8b4b8; text-decoration: none; transition: opacity 0.3s;">+91 6281781235</a></p>
+                <p style="font-size: 13px; font-weight: 300;"><a href="https://www.instagram.com/maneesha_sms" target="_blank" rel="noopener noreferrer" style="color: #e8b4b8; text-decoration: none; transition: opacity 0.3s;">@maneesha_sms</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script imports -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+    <script src="script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mayakriti | Design Beyond Walls</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@300;400;700&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@300;400;700&display=swap"></noscript>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Fantasy animated background -->
+    <canvas id="fantasy-bg" aria-hidden="true"></canvas>
+
+    <div id="custom-cursor" aria-hidden="true"></div>
+
+    <nav class="navbar nav-solid" aria-label="Main navigation">
+        <div class="nav-container">
+            <div class="brand-block">
+                <a href="index.html" class="nav-logo-block">
+                    <img src="logo.png" alt="Mayakriti Logo" class="brand-img" width="45" height="45">
+                    <div class="brand-text">
+                        <span class="brand-name">Mayakriti</span>
+                    </div>
+                </a>
+                <span class="brand-slogan">design beyond walls</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">HOME</a>
+                <a href="projects.html">PROJECTS</a>
+                <a href="thesis.html">THESIS</a>
+                <a href="about.html">ABOUT</a>
+            </div>
+            <div class="force-enquiry">
+                <button class="nav-enquiry" onclick="toggleSlider()" aria-haspopup="dialog">ENQUIRY</button>
+            </div>
+        </div>
+    </nav>
+
+    <!--
+    ════════════════════════════════════════════════════════
+    PHOTO GRID — 5 images, alternating portrait / landscape.
+    ════════════════════════════════════════════════════════
+    -->
+    <main class="studio-grid">
+
+        <!-- 1 — portrait -->
+        <div class="grid-item portrait">
+            <img src="3BHK_Basic_Residential_Project/0.jpg"  alt="Interior — living room"
+                 loading="lazy" decoding="async" width="900"  height="1200">
+        </div>
+
+        <!-- 2 — landscape -->
+        <div class="grid-item landscape">
+            <img src="3BHK_Standard_Residential_Project/0.jpg" alt="Interior — dining area"
+                 loading="lazy" decoding="async" width="1600" height="900">
+        </div>
+
+        <!-- 3 — full-width banner -->
+        <div class="grid-item full-width">
+            <img src="3BHK_Premium_Residential_Project/2.jpeg" alt="Interior — studio overview"
+                 loading="lazy" decoding="async" width="2400" height="1080">
+        </div>
+
+        <!-- 4 — landscape -->
+        <div class="grid-item landscape">
+            <img src="Premium_Design/0.png" alt="Interior — bedroom"
+                 loading="lazy" decoding="async" width="1600" height="900">
+        </div>
+
+        <!-- 5 — portrait -->
+        <div class="grid-item portrait">
+            <img src="outdoor_camp_house/5.jpeg"  alt="Interior — detail"
+                 loading="lazy" decoding="async" width="900"  height="1200">
+        </div>
+
+    </main>
+
+    <footer class="site-credits">
+        <div class="credit-wrap">
+            <div class="credit-col left branding">
+                <span>MAYAKRITI<br>INTERIORS</span>
+            </div>
+            <div class="credit-col center links">
+                <a href="#" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
+                <a href="#" onclick="toggleSlider(); return false;">CONTACT</a>
+            </div>
+            <div class="credit-col right">
+                <span>SITES BY MPG &copy; 2026</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Corrected: Form is nested safely inside the original modal drawer structure -->
+    <div id="enquirySlider" class="slider-container" role="dialog" aria-modal="true" aria-label="Enquiry form">
+        <div class="slider-content">
+            <button class="close-slider" onclick="toggleSlider()" aria-label="Close">CLOSE ×</button>
+            <h2>GET IN TOUCH</h2>
+            <p>Design beyond walls starts here.</p>
+            
+            <form id="enquiryForm" action="https://api.web3forms.com/submit" method="POST">
+                
+                <!-- Required: Your unique Web3Forms Access Key -->
+                <input type="hidden" name="access_key" value="e04ebe49-4973-474e-beb4-148bc0a5d6e8">
+
+                <!-- Optional: Set a custom subject line for incoming email notifications -->
+                <input type="hidden" name="subject" value="New Enquiry from Mayakriti Portfolio">
+
+                <!-- Optional: Redirect back to your home page after submission -->
+                <!-- Replace with your actual live URL once hosted (e.g., https://mayakriti.com/index.html) -->
+                <input type="hidden" name="redirect" value="http://yourdomain.com/index.html">
+
+                <!-- Form Inputs -->
+                <input type="text"  name="name"    placeholder="NAME"             required autocomplete="name">
+                <input type="email" name="email"   placeholder="EMAIL"            required autocomplete="email">
+                <input type="tel"   name="phone"   placeholder="PHONE (OPTIONAL)"          autocomplete="tel">
+                <textarea           name="message" placeholder="PROJECT DETAILS"  rows="5"  required></textarea>
+                
+                <button type="submit">SUBMIT ENQUIRY</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+    <script src="script.js" defer></script>
+</body>
+</html>

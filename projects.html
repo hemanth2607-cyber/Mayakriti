@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mayakriti | Projects</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@300;400;700&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@300;400;700&display=swap"></noscript>
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="projects.css">
+</head>
+<body>
+
+    <!-- Fantasy animated background -->
+    <canvas id="fantasy-bg" aria-hidden="true"></canvas>
+
+    <div id="custom-cursor" aria-hidden="true"></div>
+
+    <nav class="navbar nav-solid" aria-label="Main navigation">
+        <div class="nav-container">
+            <div class="brand-block">
+                <a href="index.html" class="nav-logo-block">
+                    <img src="logo.png" alt="Mayakriti Logo" class="brand-img" width="45" height="45">
+                    <div class="brand-text">
+                        <span class="brand-name">Mayakriti</span>
+                    </div>
+                </a>
+                <span class="brand-slogan">design beyond walls</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">HOME</a>
+                <a href="projects.html" class="active">PROJECTS</a>
+                <a href="thesis.html">THESIS</a>
+                <a href="about.html">ABOUT</a>
+            </div>
+            <div class="force-enquiry">
+                <button class="nav-enquiry" onclick="toggleSlider()" aria-haspopup="dialog">ENQUIRY</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Portfolio Layout -->
+    <main class="projects-main">
+        <header class="projects-header">
+            <h1>Selected Work</h1>
+            <p>An architectural curation of residential spaces, spatial structures, and functional physical forms. Designed to blur boundaries between exterior environments and personal volumes.</p>
+        </header>
+
+        <!-- Dynamic 2-Column Catalog Grid (Populated by projects.js) -->
+        <section class="projects-grid" id="projectsGrid"></section>
+    </main>
+
+    <!-- Overlay Panel (Only contains close control and block-puzzle grid) -->
+    <div id="projectOverlay" class="project-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+        <button class="overlay-close" aria-label="Close project gallery">×</button>
+        <div class="overlay-content" id="overlayContent">
+            <div class="overlay-gallery" id="overlayGallery"></div>
+        </div>
+    </div>
+
+    <footer class="site-credits">
+        <div class="credit-wrap">
+            <div class="credit-col left branding">
+                <span>MAYAKRITI<br>INTERIORS</span>
+            </div>
+            <div class="credit-col center links">
+                <a href="https://www.instagram.com/maneesha_sms" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
+                <a href="#" onclick="toggleSlider(); return false;">CONTACT</a>
+            </div>
+            <div class="credit-col right">
+                <span>SITES BY MPG &copy; 2026</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Web3Forms Slider Drawer (With integrated Direct Connection Details) -->
+    <div id="enquirySlider" class="slider-container" role="dialog" aria-modal="true" aria-label="Enquiry form">
+        <div class="slider-content">
+            <button class="close-slider" onclick="toggleSlider()" aria-label="Close">CLOSE ×</button>
+            <h2>GET IN TOUCH</h2>
+            <p>Design beyond walls starts here.</p>
+            
+            <form id="enquiryForm" action="https://api.web3forms.com/submit" method="POST">
+                
+                <!-- Web3Forms Access Key Token -->
+                <input type="hidden" name="access_key" value="e04ebe49-4973-474e-beb4-148bc0a5d6e8">
+                <input type="hidden" name="subject" value="New Enquiry from Mayakriti Projects Page">
+                <input type="hidden" name="redirect" value="projects.html">
+
+                <input type="text"  name="name"    placeholder="NAME"             required autocomplete="name">
+                <input type="email" name="email"   placeholder="EMAIL"            required autocomplete="email">
+                <input type="tel"   name="phone"   placeholder="PHONE (OPTIONAL)"          autocomplete="tel">
+                <textarea           name="message" placeholder="PROJECT DETAILS"  rows="5"  required></textarea>
+                
+                <button type="submit">SUBMIT ENQUIRY</button>
+            </form>
+
+            <!-- Direct Contact details inside slider content -->
+            <div class="slider-direct-contact" style="margin-top: 45px; border-top: 1px solid rgba(232, 180, 184, 0.15); padding-top: 30px;">
+                <p style="font-size: 9px; letter-spacing: 2px; color: rgba(245, 237, 230, 0.4); margin-bottom: 15px; font-weight: 700; text-transform: uppercase;">Direct Connection</p>
+                <p style="font-size: 13px; margin-bottom: 8px; font-weight: 300;"><a href="mailto:mayakrtiinteriorz@gmail.com" style="color: #e8b4b8; text-decoration: none; transition: opacity 0.3s;">mayakrtiinteriorz@gmail.com</a></p>
+                <p style="font-size: 13px; margin-bottom: 8px; font-weight: 300;"><a href="tel:6281781235" style="color: #e8b4b8; text-decoration: none; transition: opacity 0.3s;">+91 6281781235</a></p>
+                <p style="font-size: 13px; font-weight: 300;"><a href="https://www.instagram.com/maneesha_sms" target="_blank" rel="noopener noreferrer" style="color: #e8b4b8; text-decoration: none; transition: opacity 0.3s;">@maneesha_sms</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script imports -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+    <script src="script.js" defer></script>
+    <script src="projects.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,249 @@
+/* ═══════════════════════════════════════════════
+   MAYAKRITI — projects.css
+   ═══════════════════════════════════════════════ */
+
+.nav-links a.active {
+    opacity: 1 !important;
+    border-bottom: 1px solid var(--text-light);
+    padding-bottom: 2px;
+}
+
+/* ── 1. Page Header ──────────────────────────── */
+.projects-main {
+    position: relative;
+    z-index: 1;
+}
+
+.projects-header {
+    padding: calc(var(--navbar-h) + 60px) 60px 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.projects-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    font-weight: 400;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    color: var(--text-light);
+}
+
+.projects-header p {
+    font-size: 13px;
+    line-height: 1.7;
+    color: rgba(245, 237, 230, 0.7);
+    max-width: 520px;
+    letter-spacing: 0.5px;
+    font-weight: 300;
+}
+
+/* ── 2. Aligned 2-Column Catalog Grid ────────── */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    gap: 60px 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 60px 140px;
+}
+
+.project-card {
+    grid-column: auto;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    cursor: pointer;
+}
+
+/* Standard landscape display frame */
+.project-card-img-wrap {
+    width: 100%;
+    padding-bottom: 62.5%; /* Consistent 16:10 ratio box */
+    position: relative;
+    overflow: hidden;
+    background: #1a0008;
+}
+
+.project-card-img-wrap img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 1.2s var(--ease-expo), filter 0.8s;
+    filter: saturate(0.8) brightness(0.9);
+}
+
+/* ── 3. Hover Overlay Effect ────────────────── */
+.project-card-hover-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(13, 0, 5, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.5s var(--ease-expo);
+    padding: 24px;
+    text-align: center;
+    z-index: 2;
+}
+
+/* Driven programmatically on coordinate collision to guarantee instant scroll response */
+.project-card.is-hovered .project-card-hover-overlay {
+    opacity: 1;
+}
+
+.project-card-hover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 1.3;
+    transform: translateY(15px);
+    transition: transform 0.6s var(--ease-expo);
+}
+
+.project-card.is-hovered .project-card-hover-title {
+    transform: translateY(0);
+}
+
+.project-card-img-wrap img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 1.2s var(--ease-expo), filter 0.8s;
+    filter: saturate(0.8) brightness(0.9);
+}
+
+.project-card.is-hovered .project-card-img-wrap img {
+    transform: scale(1.03);
+    filter: saturate(1.05) brightness(0.98);
+}
+
+
+/* ── 4. Under-card Metadata Display ─────────── */
+.project-card-meta {
+    margin-top: 15px;
+}
+
+.project-card-sub-title {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(245, 237, 230, 0.6);
+    font-weight: 400;
+    display: block;
+}
+
+/* ── 5. Overlay Gallery Configuration ────────── */
+.project-overlay {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(13, 0, 5, 0.995);
+    z-index: 2500;
+    overflow-y: auto; /* Required for Lenis scroll wrapping */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.8s var(--ease-expo);
+}
+
+.project-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.overlay-close {
+    position: fixed;
+    top: 30px;
+    right: 40px;
+    background: none;
+    border: none;
+    color: #e8b4b8;
+    font-size: 32px;
+    line-height: 1;
+    cursor: none !important;
+    z-index: 2600;
+    transition: transform 0.3s ease, opacity 0.3s;
+}
+
+.overlay-close:hover {
+    opacity: 0.6;
+    transform: scale(1.1);
+}
+
+.overlay-content {
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 90px 20px; /* Minimal padding for edge-to-edge enclosing */
+}
+
+/* ── 6. Block-Puzzle Masonry Layout ──────────── */
+.overlay-gallery {
+    column-count: 2; /* Strictly 2 columns across */
+    column-gap: 8px; /* Little gap space between the columns */
+    width: 100%;
+}
+
+.gallery-img-container {
+    break-inside: avoid; /* Prevents an image from being split across column breaks */
+    margin-bottom: 8px; /* Little gap space between vertical blocks */
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+}
+
+.gallery-img-container img {
+    width: 100%;
+    height: auto; /* Retains 100% of the image's native aspect ratio (no crops) */
+    display: block;
+    filter: saturate(0.85) brightness(0.92);
+    transition: transform 1.2s var(--ease-expo), filter 0.5s;
+}
+
+.gallery-img-container:hover img {
+    filter: saturate(1.05) brightness(1);
+    transform: scale(1.02);
+}
+
+/* ── 7. Responsive Configuration ──────────────── */
+@media (max-width: 900px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+        padding: 0 24px 80px;
+        gap: 40px;
+    }
+
+    .project-card-img-wrap {
+        padding-bottom: 66%;
+    }
+
+    .overlay-close {
+        top: 25px;
+        right: 25px;
+    }
+
+    .overlay-content {
+        padding: 80px 10px;
+    }
+
+    .overlay-gallery {
+        column-count: 2; /* Retain the 2-column block puzzle layout on mobile screens */
+        column-gap: 6px;
+    }
+    
+    .gallery-img-container {
+        margin-bottom: 6px;
+    }
+}
